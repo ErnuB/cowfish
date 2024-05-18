@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'deliver';
+    src: url("/fonts/deliver/deliver.otf");
+}
+
+@font-face {
+    font-family: 'giliams';
+    src: url("/fonts/giliams/giliams.ttf");
+}
+
+@font-face {
+    font-family: 'notulen';
+    src: url("/fonts/notulen/notulen.otf");
+}
+
+@font-face {
+    font-family: 'museosans';
+    src: url("/fonts/museosans/museo.otf");
+}
