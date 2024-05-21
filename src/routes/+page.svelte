@@ -4,10 +4,18 @@
     import Modal from './Modal.svelte';
     import GotoTop from './GotoTop.svelte';
 	import Carousel from './Carrusel.svelte';
+    import Popup from './Popup.svelte';
 
     let isOverlayOpen = false;
     let selectedImage = null;
     let alternativeText = null;
+    let showPopup = false;
+    let selectedImageIndex = 0;
+
+    function openPopup(index) {
+        selectedImageIndex = index;
+        showPopup = true;
+  };
 
     function openModal(imagen, altText) {
         selectedImage = imagen;
@@ -22,17 +30,17 @@
     };
 
     let galeria = [
-        {imagen:"/img/galeria01.jpg"},
-        {imagen:"/img/galeria02.jpg"},
-        {imagen:"/img/galeria03.jpg"},
-        {imagen:"/img/galeria04.jpg"},
-        {imagen:"/img/galeria05.jpg"},
-        {imagen:"/img/galeria06.jpg"},
-        {imagen:"/img/galeria07.jpg"},
-        {imagen:"/img/galeria08.jpg"},
-        {imagen:"/img/galeria09.jpg"},
-        {imagen:"/img/galeria10.jpg"},
-    ];
+    "/img/galeria01.jpg",
+    "/img/galeria02.jpg",
+    "/img/galeria03.jpg",
+    "/img/galeria04.jpg",
+    "/img/galeria05.jpg",
+    "/img/galeria06.jpg",
+    "/img/galeria07.jpg",
+    "/img/galeria08.jpg",
+    "/img/galeria09.jpg",
+    "/img/galeria10.jpg",
+  ];
 
     let seccion = [
         {id: "empezar", nombre: "para empezar"},
@@ -80,16 +88,16 @@
         {category: "estrellas", subcategory: "", nombre: "Aguachile Verde", descripcion: "El inigualable aguachile de camarón crudo bañado en salsa verde de chile serrano con pepino y cebolla morada", descripcion2: "¡Buenísimo!", precio: "170", imagen: "/img/aguachile-verde.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Camarones Chirrisquis", descripcion: "Camarones guisados bañados en salsa de tomate picosita y gratinados con queso doradito al Horno", descripcion2: "¡Muy buenos!", precio: "210", imagen: "/img/chirrisquis.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Sopa Marinera", descripcion: "La Clásica: Pulpo, pescado, camarón, ostión y chocolate; Acompañada de arroz a la jardinera", descripcion2: "¡Riquísima y muy sustanciosa!", precio: "200", imagen: "marinera.jpg"},
-        {category: "estrellas", subcategory: "", nombre: "Filete \"La Comadre\"", descripcion: "Filete de pescado zarandeado sazonado con nuestro inigualable aderezo de la casa, queso gratinado y dorado al horno", descripcion2: "¡El mejor que probarás!", precio: "220", imagen: ""},
+        {category: "estrellas", subcategory: "", nombre: "Filete \"La Comadre\"", descripcion: "Filete de pescado zarandeado sazonado con nuestro inigualable aderezo de la casa, queso gratinado y dorado al horno", descripcion2: "¡El mejor que probarás!", precio: "220", imagen: "/img/comadre.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Filete \"El Capule\"", descripcion: "Preparado con aderezo de chile poblano, gratinado al horno con arroz de guarnición y pico de gallo", descripcion2: "¡Algo diferente!", precio: "250", imagen: "/img/capule.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Ceviche Mitotero", descripcion: "El tradicional ceviche de camarón mixto y pulpo con el sabor inigualable de Cow Fish", descripcion2: "¡Incomparable!", precio: "180", imagen: "/img/ceviche-mitotero.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Molcajete", descripcion: "Camarón mixto, róbalo y pulpo, acompañado de tostitos con salsa especial de la casa", descripcion2: "¡Te va a encantar!", precio: "250", imagen: "/img/molcajete.jpg"},
         {category: "estrellas", subcategory: "", nombre: "El Soruyo", descripcion: "Aguachile de camarón crudo bañado con salsas negras con toque oriental", descripcion2: "¡Espectacular!", precio: "170", imagen: "/img/soruyo.jpg"},
-        {category: "carreta", subcategory: "aguachiles", nombre: "Aguachile de Camarón", descripcion: "Crudo, cocido ó mixto con pepino y cebolla morada, pídelo con tu salsa preferida", descripcion2: "¡Los más famosos!", precio: "160", imagen: "/img/aguachile-mixto.jpg"},
+        {category: "carreta", subcategory: "aguachiles", nombre: "Aguachile de Camarón", descripcion: "Crudo, cocido ó mixto con pepino y cebolla morada, pídelo con tu salsa preferida", descripcion2: "¡Los más famosos!", precio: "160", imagen: "/img/aguachile.jpg"},
         {category: "carreta", subcategory: "aguachiles", nombre: "Aguachile de Pulpo", descripcion: "Con pepino y cebolla morada", descripcion2: "¡Riquísimo!", precio: "220", imagen: "/img/aguachile-pulpo.jpg"},
         {category: "carreta", subcategory: "aguachiles", nombre: "Aguachile de Camarón y Pulpo", descripcion: "", descripcion2: "¡La combinación perfecta!", precio: "180", imagen: "/img/aguachile-mixto-pulpo.jpg"},
         {category: "carreta", subcategory: "ceviches", nombre: "Ceviche de Camarón", descripcion: "Pídelo cómo más te guste: Crudo, cocido ó mixto con pepino, cebolla morada y tomate", descripcion2: "¡Sabor garantizado!", precio: "150", imagen: "/img/ceviche-camaron.jpg"},
-        {category: "carreta", subcategory: "ceviches", nombre: "Ceviche de Pescado", descripcion: "", descripcion2: "¡El clásico con sazón de casa!", precio: "130", imagen: ""},
+        {category: "carreta", subcategory: "ceviches", nombre: "Ceviche de Pescado", descripcion: "", descripcion2: "¡El clásico con sazón de casa!", precio: "130", imagen: "/img/ceviche-pescado.jpg"},
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún", descripcion: "", descripcion2: "", precio: "145", imagen: "/img/tiradito-atun.jpg"},
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Camarón", descripcion: "", descripcion2: "", precio: "170", imagen: "/img/tiradito-atun-camaron.jpg"},
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/tiradito-atun-pulpo.jpg"},
@@ -97,14 +105,14 @@
         {category: "carreta", subcategory: "robalo", nombre: "Callo Róbalo (Órden)", descripcion: "", descripcion2: "", precio: "180", imagen: ""},
         {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón", descripcion: "", descripcion2: "", precio: "210", imagen: ""},
         {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/robalo-pulpo.jpg"},
-        {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón y Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: ""},
+        {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón y Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/robalo-pulpo-camaron.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Camarón", descripcion: "", descripcion2: "", precio: "150", imagen: "/img/coctel-camaron.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Camarón con Pulpo", descripcion: "", descripcion2: "", precio: "170", imagen: "/img/coctel-camaron-pulpo.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Campechana", descripcion: "", descripcion2: "", precio: "180", imagen: "/img/campechana.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Taco de Camarón", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
         {category: "carreta", subcategory: "tacos", nombre: "Taco de Pulpo", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/taco-pulpo.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Taco de Botete", descripcion: "", descripcion2: "", precio: "40", imagen: ""},
-        {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Camarón", descripcion: "", descripcion2: "", precio: "50", imagen: ""},
+        {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Camarón", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/quesadilla-camaron.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Pulpo", descripcion: "", descripcion2: "", precio: "75", imagen: ""},
         {category: "carreta", subcategory: "tacos", nombre: "Quesadilla de Botete", descripcion: "", descripcion2: "", precio: "60", imagen: ""},
         {category: "carreta", subcategory: "tacos", nombre: "Quesadilla de Marlin", descripcion: "", descripcion2: "", precio: "70", imagen: "/img/quesadilla-marlin.jpg"},
@@ -116,7 +124,7 @@
         {category: "especiales", subcategory: "", nombre: "Chocolata Especial (3 pzas)", descripcion: "", descripcion2: "", precio: "150", imagen: "chocolatas-especiales.jpg"},
         {category: "especiales", subcategory: "", nombre: "Chocolatas Gratinadas (6 pzas)", descripcion: "", descripcion2: "", precio: "200", imagen: "/img/chocolatas-gratinadas.jpg"},
         {category: "especiales", subcategory: "", nombre: "Chocolatas Gratinadas (12 pzas)", descripcion: "", descripcion2: "", precio: "300", imagen: "/img/chocolatas-gratinadas.jpg"},
-        {category: "especiales", subcategory: "", nombre: "Pescado Zarandeado", descripcion: "", descripcion2: "", precio: "", imagen: ""},
+        {category: "especiales", subcategory: "", nombre: "Pescado Zarandeado", descripcion: "Solo sobre pedido, precio varía según peso", descripcion2: "", precio: "", imagen: "/img/zarandeado.jpg"},
         {category: "especiales", subcategory: "postre", nombre: "Flan Casero", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/flan.jpg"},
         {category: "especiales", subcategory: "postre", nombre: "Pay de Queso", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/pay-queso.jpg"},
         {category: "cervezas", subcategory: "", nombre: "Modelo Especial", descripcion: "", descripcion2: "", precio: "40", imagen: "/img/modelo.jpg"},
@@ -255,13 +263,7 @@
     </button>
     {#if openSections["experiencias"]}
     <div class="mx-2 my-4" transition:slide>
-        <div class="flex flex-wrap gap-0.5 justify-center">
-            {#each galeria as galeriaImagen}
-            <button on:click={() => openModal(galeriaImagen.imagen, '')} class="w-1/5">
-                <img src="{galeriaImagen.imagen}" alt="" class="object-contain">
-            </button>
-            {/each}
-        </div>
+        <Popup />
     </div>
     {/if}
 </div>
