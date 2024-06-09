@@ -11,16 +11,19 @@
     let threshold = 100;
     
     let galeria = [
-      { imagen: "/img/galeria01.jpg" },
-      { imagen: "/img/galeria02.jpg" },
-      { imagen: "/img/galeria03.jpg" },
-      { imagen: "/img/galeria04.jpg" },
-      { imagen: "/img/galeria05.jpg" },
-      { imagen: "/img/galeria06.jpg" },
-      { imagen: "/img/galeria07.jpg" },
-      { imagen: "/img/galeria08.jpg" },
-      { imagen: "/img/galeria09.jpg" },
-      { imagen: "/img/galeria10.jpg" },
+      { imagen: "/img/galeria/galeria01.jpg" },
+      { imagen: "/img/galeria/galeria02.jpg" },
+      { imagen: "/img/galeria/galeria03.jpg" },
+      { imagen: "/img/galeria/galeria04.jpg" },
+      { imagen: "/img/galeria/galeria05.jpg" },
+      { imagen: "/img/galeria/galeria12.jpg" },
+      { imagen: "/img/galeria/galeria11.jpg" },
+      { imagen: "/img/galeria/galeria06.jpg" },
+      { imagen: "/img/galeria/galeria07.jpg" },
+      { imagen: "/img/galeria/galeria08.jpg" },
+      { imagen: "/img/galeria/galeria09.jpg" },
+      { imagen: "/img/galeria/galeria10.jpg" },
+      { imagen: "/img/galeria/galeria13.jpg" },
     ];
   
     const openModal = (index) => {
@@ -71,7 +74,7 @@
   </script>
   
   <div class="mx-2 my-4" transition:slide>
-    <div class="flex flex-wrap gap-0.5 justify-center">
+    <div class="flex flex-wrap gap-0.5 justify-center items-center">
       {#each galeria as { imagen }, index}
         <button class="w-1/5" on:click={() => openModal(index)}>
           <img src={imagen} alt="Experiencias CowFish" class="object-contain cursor-pointer">

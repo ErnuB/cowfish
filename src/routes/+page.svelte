@@ -5,6 +5,7 @@
     import GotoTop from './GotoTop.svelte';
 	import Carousel from './Carrusel.svelte';
     import Popup from './Popup.svelte';
+	import Footer from './Footer.svelte';
 
     let isOverlayOpen = false;
     let selectedImage = null;
@@ -28,19 +29,6 @@
         alternativeText = null;
         isOverlayOpen = false;
     };
-
-    let galeria = [
-    "/img/galeria01.jpg",
-    "/img/galeria02.jpg",
-    "/img/galeria03.jpg",
-    "/img/galeria04.jpg",
-    "/img/galeria05.jpg",
-    "/img/galeria06.jpg",
-    "/img/galeria07.jpg",
-    "/img/galeria08.jpg",
-    "/img/galeria09.jpg",
-    "/img/galeria10.jpg",
-  ];
 
     let seccion = [
         {id: "empezar", nombre: "para empezar"},
@@ -200,24 +188,24 @@
         </div>
         {#each getFilteredItems(seccionItem.id, subItem.id) as item}
             {#if item.nombre === "Camarones p/Pelar"}
-            <div class="flex items-center gap-2 mt-4 mx-1">
-                <button on:click={() => openModal(item.imagen, '')} class="[text-shadow:_2px_2px_1px_rgb(0_0_0_/_60%)] text-start font-giliams text-3xl text-[#0b3261]">{item.nombre}&thinsp;<i class="fa-regular fa-image"></i></button>
+            <div class="flex items-center mt-4 mx-1">
+                <button on:click={() => openModal(item.imagen, '')} class="font-semibold tracking-wide text-start font-giliams text-3xl text-[#0b3261] text-pretty">{item.nombre}&thinsp;<i class="fa-regular fa-image text-sm"></i></button>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio}<p class="text-sm text-center align-middle">1 kg</p></span>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio2}<p class="text-sm text-center align-middle">½ kg</p></span>
             </div>
             <span class="w-5/6 text-justify font-museosans pt-1 ml-1 leading-5 mx-1">{item.descripcion}</span>
             <span class="w-5/6 text-justify font-museosans pt-1 ml-1 italic leading-5 mx-1">{item.descripcion2}</span>
             {:else if item.imagen === ""}
-            <div class="flex items-center gap-10 mt-4 mx-1">
-                <span class="[text-shadow:_2px_2px_1px_rgb(0_0_0_/_60%)] font-giliams text-3xl text-[#0b3261]">{item.nombre}</span>
+            <div class="flex items-center mt-4 mx-1">
+                <span class="font-semibold tracking-wide font-giliams text-3xl text-[#0b3261] text-pretty">{item.nombre}</span>
                 <span class="grow"></span>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio}</span>
             </div>
             <span class="w-5/6 text-justify font-museosans pt-1 ml-1 leading-5 mx-1">{item.descripcion}</span>
             <span class="w-5/6 text-justify font-museosans pt-1 ml-1 italic leading-5 mx-1">{item.descripcion2}</span>
             {:else}
-            <div class="flex items-center gap-10 mt-4 mx-1">
-                <button on:click={() => openModal(item.imagen, '')} class="[text-shadow:_2px_2px_1px_rgb(0_0_0_/_60%)] text-start font-giliams text-3xl text-[#0b3261]">{item.nombre}&thinsp;<i class="fa-regular fa-image"></i></button>
+            <div class="flex items-center mt-4 mx-1">
+                <button on:click={() => openModal(item.imagen, '')} class="font-semibold tracking-wide text-start font-giliams text-3xl text-[#0b3261] text-pretty">{item.nombre}&thinsp;<i class="fa-regular fa-image text-sm"></i></button>
                 <span class="grow"></span>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio}</span>
             </div>
@@ -231,8 +219,8 @@
     {#if !item.subcategory}
         {#if item.imagen === ""}
         <div class="mx-2 my-4">
-            <div class="flex items-center gap-10 mt-4 mx-1">
-                <span class="[text-shadow:_2px_2px_1px_rgb(0_0_0_/_60%)] font-giliams text-3xl text-[#0b3261]">{item.nombre}</span>
+            <div class="flex items-center mt-4 mx-1">
+                <span class="font-semibold tracking-wide font-giliams text-3xl text-[#0b3261] text-pretty">{item.nombre}</span>
                 <span class="grow"></span>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio}</span>
             </div>
@@ -241,8 +229,8 @@
         </div>
         {:else}
         <div class="mx-2 my-4">
-            <div class="flex items-center gap-10 mt-4 mx-1">
-                <button on:click={() => openModal(item.imagen, '')} class="[text-shadow:_2px_2px_1px_rgb(0_0_0_/_60%)] text-start font-giliams text-3xl text-[#0b3261]">{item.nombre}&thinsp;<i class="fa-regular fa-image"></i></button>
+            <div class="flex items-center mt-4 mx-1">
+                <button on:click={() => openModal(item.imagen, '')} class="font-semibold tracking-wide text-start font-giliams text-3xl text-[#0b3261] text-pretty">{item.nombre}&thinsp;<i class="fa-regular fa-image text-sm"></i></button>
                 <span class="grow"></span>
                 <span class="text-3xl font-sans font-black mr-3"><span class="text-sm align-middle">$</span>{item.precio}</span>
             </div>
@@ -269,16 +257,7 @@
 </div>
 <div class="h-28 text-[#0b3261]">.</div>
 <GotoTop showAtPixel={500} />
-<footer class="fixed bottom-0 w-full py-2 bg-[#c3bcb2] flex flex-col items-center">
-    <div class="flex items-center justify-around gap-10">
-        <a href="https://www.facebook.com/Cowfishmariscos/" target="_top"><i class="text-3xl text-blue-800 fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/cowfishmariscosymas/" target="_blank"><i class="text-4xl fa-brands fa-square fa-instagram bg-gradient-to-bl from-pink-500 via-red-500 to-yellow-500 text-transparent bg-clip-text"></i></a>
-        <a href="tel:+526674221577"><i class="text-3xl fa fa-phone"></i></a>
-    </div>
-    <div class="">
-        <a href="https://maps.app.goo.gl/YpLXDqqjQ6cegvSu9" class="flex px-2 items-center" target="_blank"><i class="fa fa-location-dot text-3xl text-red-600"></i><p class="text-center">&thinsp;Fco. Villa #320 Centro. Culiacán, Sinaloa</p></a>
-    </div>
-</footer>
+<Footer />
 <a href="https://wa.me/5216674221577" class="fixed fill-white bg-green-500 h-10 w-10 top-16 right-4 rounded-full">
     <svg viewBox="0 0 32 32" class="whatsapp-ico"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path></svg>
 </a>

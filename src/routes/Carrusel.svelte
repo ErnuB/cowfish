@@ -1,10 +1,13 @@
 <script>
   export let images = [
-    { path: "/img/img01.jpg", description: "CowFish" },
-    { path: "/img/img02.jpg", description: "CowFish" },
-    { path: "/img/img05.jpg", description: "CowFish" },
-    { path: "/img/img03.jpg", description: "CowFish" },
-    { path: "/img/img04.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img01.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img02.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img05.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img03.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img04.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img06.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img07.jpg", description: "CowFish" },
+    { path: "/img/carrusel/img08.jpg", description: "CowFish" },
   ];
 
   import { onMount, createEventDispatcher } from "svelte";
