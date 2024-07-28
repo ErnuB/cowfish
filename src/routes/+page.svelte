@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
     import Modal from './Modal.svelte';
     import GotoTop from './GotoTop.svelte';
 	import Carousel from './Carrusel.svelte';
@@ -72,10 +73,10 @@
         {category: "empezar", subcategory: "centro", nombre: "Los Rellenitos", descripcion: "Chilitos caribe empanizados rellonos de Marlin y queso gratinado acompañados con aderezo de chipotle", descripcion2: "¡Al estilo Cow Fish!", precio: "90", imagen: "/img/rellenitos.jpg"},
         {category: "clasicos", subcategory: "", nombre: "Camarones Empanizados", descripcion: "Los Tradicionales Camarones empanizados", descripcion2: "¡Buenísimos!", precio: "160", imagen: "/img/camaron-empanizado.jpg"},
         {category: "clasicos", subcategory: "", nombre: "Chicharrón de Botete", descripcion: "Sabrosos trozos de botete empanizados", descripcion2: "¡Garantía de sabor!", precio: "160", imagen: "/img/chicharron-botete.jpg"},
-        {category: "clasicos", subcategory: "", nombre: "Filete Empanizado", descripcion: "Filetes frescos de pescado empanizados", descripcion2: "¡Suculentos!", precio: "150", imagen: ""},
+        {category: "clasicos", subcategory: "", nombre: "Filete Empanizado", descripcion: "Filetes frescos de pescado empanizados", descripcion2: "¡Suculentos!", precio: "150", imagen: "/img/filete-pescado.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Aguachile Verde", descripcion: "El inigualable aguachile de camarón crudo bañado en salsa verde de chile serrano con pepino y cebolla morada", descripcion2: "¡Buenísimo!", precio: "170", imagen: "/img/aguachile-verde.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Camarones Chirrisquis", descripcion: "Camarones guisados bañados en salsa de tomate picosita y gratinados con queso doradito al Horno", descripcion2: "¡Muy buenos!", precio: "210", imagen: "/img/chirrisquis.jpg"},
-        {category: "estrellas", subcategory: "", nombre: "Sopa Marinera", descripcion: "La Clásica: Pulpo, pescado, camarón, ostión y chocolate; Acompañada de arroz a la jardinera", descripcion2: "¡Riquísima y muy sustanciosa!", precio: "200", imagen: "marinera.jpg"},
+        {category: "estrellas", subcategory: "", nombre: "Sopa Marinera", descripcion: "La Clásica: Pulpo, pescado, camarón, ostión y chocolate; Acompañada de arroz a la jardinera", descripcion2: "¡Riquísima y muy sustanciosa!", precio: "200", imagen: "/img/marinera.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Filete \"La Comadre\"", descripcion: "Filete de pescado zarandeado sazonado con nuestro inigualable aderezo de la casa, queso gratinado y dorado al horno", descripcion2: "¡El mejor que probarás!", precio: "220", imagen: "/img/comadre.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Filete \"El Capule\"", descripcion: "Preparado con aderezo de chile poblano, gratinado al horno con arroz de guarnición y pico de gallo", descripcion2: "¡Algo diferente!", precio: "250", imagen: "/img/capule.jpg"},
         {category: "estrellas", subcategory: "", nombre: "Ceviche Mitotero", descripcion: "El tradicional ceviche de camarón mixto y pulpo con el sabor inigualable de Cow Fish", descripcion2: "¡Incomparable!", precio: "180", imagen: "/img/ceviche-mitotero.jpg"},
@@ -89,72 +90,73 @@
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún", descripcion: "", descripcion2: "", precio: "145", imagen: "/img/tiradito-atun.jpg"},
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Camarón", descripcion: "", descripcion2: "", precio: "170", imagen: "/img/tiradito-atun-camaron.jpg"},
         {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/tiradito-atun-pulpo.jpg"},
-        {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Camarón y Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: ""},
-        {category: "carreta", subcategory: "robalo", nombre: "Callo Róbalo (Órden)", descripcion: "", descripcion2: "", precio: "180", imagen: ""},
-        {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón", descripcion: "", descripcion2: "", precio: "210", imagen: ""},
+        {category: "carreta", subcategory: "tiraditos", nombre: "Atún con Camarón y Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/tiradito-atun-camaron-pulpo.jpg"},
+        {category: "carreta", subcategory: "robalo", nombre: "Callo Róbalo (Órden)", descripcion: "", descripcion2: "", precio: "180", imagen: "/img/robalo.jpg"},
+        {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón", descripcion: "", descripcion2: "", precio: "200", imagen: "/img/robalo-camaron.jpg"},
         {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/robalo-pulpo.jpg"},
         {category: "carreta", subcategory: "robalo", nombre: "Róbalo con Camarón y Pulpo", descripcion: "", descripcion2: "", precio: "210", imagen: "/img/robalo-pulpo-camaron.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Camarón", descripcion: "", descripcion2: "", precio: "150", imagen: "/img/coctel-camaron.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Camarón con Pulpo", descripcion: "", descripcion2: "", precio: "170", imagen: "/img/coctel-camaron-pulpo.jpg"},
         {category: "carreta", subcategory: "cocteles", nombre: "Campechana", descripcion: "", descripcion2: "", precio: "180", imagen: "/img/campechana.jpg"},
-        {category: "carreta", subcategory: "tacos", nombre: "Taco de Camarón", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
+        {category: "carreta", subcategory: "tacos", nombre: "Taco de Camarón", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/taco-camaron.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Taco de Pulpo", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/taco-pulpo.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Taco de Botete", descripcion: "", descripcion2: "", precio: "40", imagen: ""},
         {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Camarón", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/quesadilla-camaron.jpg"},
-        {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Pulpo", descripcion: "", descripcion2: "", precio: "75", imagen: ""},
-        {category: "carreta", subcategory: "tacos", nombre: "Quesadilla de Botete", descripcion: "", descripcion2: "", precio: "60", imagen: ""},
+        {category: "carreta", subcategory: "tacos", nombre: "Quesdilla de Pulpo", descripcion: "", descripcion2: "", precio: "75", imagen: "/img/quesadilla-pulpo.jpg"},
+        {category: "carreta", subcategory: "tacos", nombre: "Quesadilla de Botete", descripcion: "", descripcion2: "", precio: "60", imagen: "/img/quesadilla-botete.jpg"},
         {category: "carreta", subcategory: "tacos", nombre: "Quesadilla de Marlin", descripcion: "", descripcion2: "", precio: "70", imagen: "/img/quesadilla-marlin.jpg"},
         {category: "especiales", subcategory: "", nombre: "Ostión (1 pza)", descripcion: "", descripcion2: "", precio: "20", imagen: "/img/ostiones-naturales.jpg"},
         {category: "especiales", subcategory: "", nombre: "Ostión Especial (3 pzas)", descripcion: "", descripcion2: "", precio: "150", imagen: "/img/ostiones-especiales.jpg"},
         {category: "especiales", subcategory: "", nombre: "Ostiones Gratinados (6 pzas)", descripcion: "", descripcion2: "", precio: "200", imagen: "/img/ostiones-gratinados.jpg"},
-        {category: "especiales", subcategory: "", nombre: "Ostiones Gratinados (12 pzas)", descripcion: "", descripcion2: "", precio: "300", imagen: "/img/ostiones-gratinados.jpg"},
+        {category: "especiales", subcategory: "", nombre: "Ostiones Gratinados (12 pzas)", descripcion: "", descripcion2: "", precio: "350", imagen: "/img/ostiones-gratinados.jpg"},
         {category: "especiales", subcategory: "", nombre: "Chocolata (1 pza)", descripcion: "", descripcion2: "", precio: "20", imagen: "/img/chocolatas.jpg"},
-        {category: "especiales", subcategory: "", nombre: "Chocolata Especial (3 pzas)", descripcion: "", descripcion2: "", precio: "150", imagen: "chocolatas-especiales.jpg"},
+        {category: "especiales", subcategory: "", nombre: "Chocolata Especial (3 pzas)", descripcion: "", descripcion2: "", precio: "150", imagen: "/img/chocolatas-especiales.jpg"},
         {category: "especiales", subcategory: "", nombre: "Chocolatas Gratinadas (6 pzas)", descripcion: "", descripcion2: "", precio: "200", imagen: "/img/chocolatas-gratinadas.jpg"},
-        {category: "especiales", subcategory: "", nombre: "Chocolatas Gratinadas (12 pzas)", descripcion: "", descripcion2: "", precio: "300", imagen: "/img/chocolatas-gratinadas.jpg"},
+        {category: "especiales", subcategory: "", nombre: "Chocolatas Gratinadas (12 pzas)", descripcion: "", descripcion2: "", precio: "350", imagen: "/img/chocolatas-gratinadas.jpg"},
         {category: "especiales", subcategory: "", nombre: "Pescado Zarandeado", descripcion: "Solo sobre pedido, precio varía según peso", descripcion2: "", precio: "", imagen: "/img/zarandeado.jpg"},
         {category: "especiales", subcategory: "postre", nombre: "Flan Casero", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/flan.jpg"},
         {category: "especiales", subcategory: "postre", nombre: "Pay de Queso", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/pay-queso.jpg"},
         {category: "cervezas", subcategory: "", nombre: "Modelo Especial", descripcion: "", descripcion2: "", precio: "40", imagen: "/img/modelo.jpg"},
-        {category: "cervezas", subcategory: "", nombre: "Modelo Negra", descripcion: "", descripcion2: "", precio: "40", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Pacífico Suave", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Pacífico Clara", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Pacífico Light", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Corona", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Stella Artois", descripcion: "", descripcion2: "", precio: "60", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Indio", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Michelob Ultra", descripcion: "", descripcion2: "", precio: "40", imagen: ""},
+        {category: "cervezas", subcategory: "", nombre: "Modelo Negra", descripcion: "", descripcion2: "", precio: "40", imagen: "/img/modelo-negra.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Pacífico Suave", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/suave.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Pacífico Clara", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/pacifico-clara.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Pacífico Light", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/pacifico-light.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Corona", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/corona.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Stella Artois", descripcion: "", descripcion2: "", precio: "60", imagen: "/img/stella.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Indio", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/indio/jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Michelob Ultra", descripcion: "", descripcion2: "", precio: "40", imagen: "/img/ultra.jpg"},
         {category: "cervezas", subcategory: "", nombre: "Michelob y Coronitas de Sabor", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/coronita.jpg"},
-        {category: "cervezas", subcategory: "", nombre: "Cerveza sin Alcohol", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Tecate Light ¼", descripcion: "", descripcion2: "", precio: "17", imagen: ""},
-        {category: "cervezas", subcategory: "", nombre: "Tecate Rojo Bote", descripcion: "", descripcion2: "", precio: "30", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Refrescos", descripcion: "", descripcion2: "", precio: "30", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Limonada Mineral ó Natural", descripcion: "", descripcion2: "", precio: "35", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Agua Fresca (500 ml)", descripcion: "", descripcion2: "", precio: "25", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Agua Fresca (1 Lt)", descripcion: "", descripcion2: "", precio: "45", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Agua Mineral", descripcion: "", descripcion2: "", precio: "30", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Agua Natural Embotellada", descripcion: "", descripcion2: "", precio: "30", imagen: ""},
-        {category: "bebidas", subcategory: "", nombre: "Chabelita (Michelada)", descripcion: "", descripcion2: "", precio: "30", imagen: "/img/chabelita.jpg"},
-        {category: "licoreria", subcategory: "", nombre: "Etiqueta Negra", descripcion: "", descripcion2: "", precio: "130", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Maestro Dobel", descripcion: "", descripcion2: "", precio: "130", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Mezcal 400 Conejos", descripcion: "", descripcion2: "", precio: "130", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Captain Morgan", descripcion: "", descripcion2: "", precio: "110", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Matusalem", descripcion: "", descripcion2: "", precio: "110", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "José Cuervo Tradicional", descripcion: "", descripcion2: "", precio: "100", imagen: ""},
+        {category: "cervezas", subcategory: "", nombre: "Cerveza sin Alcohol", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/sin-alcohol.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Tecate Light ¼", descripcion: "", descripcion2: "", precio: "17", imagen: "/img/tkt-light.jpg"},
+        {category: "cervezas", subcategory: "", nombre: "Tecate Roja", descripcion: "", descripcion2: "", precio: "30", imagen: "/img/tkt-cuarto.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Refrescos", descripcion: "", descripcion2: "", precio: "30", imagen: "/img/coca-cola.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Limonada Mineral ó Natural", descripcion: "", descripcion2: "", precio: "35", imagen: "/img/limonada.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Agua Fresca (500 ml)", descripcion: "", descripcion2: "", precio: "25", imagen: "/img/aguas-frescas.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Agua Fresca (1 Lt)", descripcion: "", descripcion2: "", precio: "45", imagen: "/img/aguas-frescas.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Agua Mineral", descripcion: "", descripcion2: "", precio: "30", imagen: "/img/mineral.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Agua Natural Embotellada", descripcion: "", descripcion2: "", precio: "30", imagen: "/img/agua.jpg"},
+        {category: "bebidas", subcategory: "", nombre: "Chabelita (Michelada)", descripcion: "", descripcion2: "", precio: "50", imagen: "/img/chabelita.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Etiqueta Negra", descripcion: "", descripcion2: "", precio: "130", imagen: "/img/etiqueta-negra.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Maestro Dobel", descripcion: "", descripcion2: "", precio: "130", imagen: "/img/dobel.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Mezcal 400 Conejos", descripcion: "", descripcion2: "", precio: "130", imagen: "/img/400.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Captain Morgan", descripcion: "", descripcion2: "", precio: "110", imagen: "/img/cap-morgan.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Matusalem", descripcion: "", descripcion2: "", precio: "110", imagen: "/img/matusalen.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "José Cuervo Tradicional", descripcion: "", descripcion2: "", precio: "100", imagen: "/img/cuervo.jpg"},
         {category: "licoreria", subcategory: "", nombre: "Carajillo", descripcion: "", descripcion2: "", precio: "100", imagen: "/img/carajillo.jpg"},
-        {category: "licoreria", subcategory: "", nombre: "Bacardí", descripcion: "", descripcion2: "", precio: "90", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Vodka Smirnoff", descripcion: "", descripcion2: "", precio: "90", imagen: ""},
-        {category: "licoreria", subcategory: "", nombre: "Smirnoff Tamarindo", descripcion: "", descripcion2: "", precio: "40", imagen: ""},
+        {category: "licoreria", subcategory: "", nombre: "Bacardí", descripcion: "", descripcion2: "", precio: "90", imagen: "/img/bacardi.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Vodka Smirnoff", descripcion: "", descripcion2: "", precio: "90", imagen: "/img/smirnof.jpg"},
+        {category: "licoreria", subcategory: "", nombre: "Smirnoff Tamarindo", descripcion: "", descripcion2: "", precio: "40", imagen: "/img/smirnof-tamarindo.jpg"},
     ];
 
-    let openSections = {};
     
     onMount(() => {
         seccion.forEach(sec => {
             openSections[sec.id] = false;
         });
     });
-
+    
+    let openSections = {};
+    
     function toggleSection(id) {
         openSections[id] = !openSections[id];
         openSections = { ...openSections };
@@ -178,7 +180,7 @@
 <div class="bg-[#c3bcb2]">
     <button class="w-full text-center text-[#0b3261] text-6xl font-deliver p-3 bg-gradient-to-b from-[#c3bcb2] to-[#0b3261b0]" on:click={() => toggleSection(seccionItem.id)}>{seccionItem.nombre}</button>
     {#if openSections[seccionItem.id]}
-    <div class="mx-2 my-4" transition:slide>
+    <div class="mx-2 my-4" transition:fly={{ y: '100%' }}>
     {#each subseccion.filter(sub => sub.seccion === seccionItem.id) as subItem}
         <p class="text-[#bc268f] uppercase text-center font-notulen text-3xl pt-8">{subItem.nombre}</p>
         <div class="flex justify-center items-center gap-6 -mt-4">
@@ -258,7 +260,7 @@
 <div class="h-28 text-[#0b3261]">.</div>
 <GotoTop showAtPixel={500} />
 <Footer />
-<a href="https://wa.me/5216674221577" class="fixed fill-white bg-green-500 h-10 w-10 top-16 right-4 rounded-full">
+<a href="https://wa.me/5216674221577" class="fixed fill-white bg-green-500 h-10 w-10 top-16 z-50 right-4 rounded-full">
     <svg viewBox="0 0 32 32" class="whatsapp-ico"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path></svg>
 </a>
 {#if isOverlayOpen}

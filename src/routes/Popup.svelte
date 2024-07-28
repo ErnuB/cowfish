@@ -16,14 +16,34 @@
       { imagen: "/img/galeria/galeria03.jpg" },
       { imagen: "/img/galeria/galeria04.jpg" },
       { imagen: "/img/galeria/galeria05.jpg" },
-      { imagen: "/img/galeria/galeria12.jpg" },
-      { imagen: "/img/galeria/galeria11.jpg" },
       { imagen: "/img/galeria/galeria06.jpg" },
       { imagen: "/img/galeria/galeria07.jpg" },
       { imagen: "/img/galeria/galeria08.jpg" },
       { imagen: "/img/galeria/galeria09.jpg" },
       { imagen: "/img/galeria/galeria10.jpg" },
+      { imagen: "/img/galeria/galeria11.jpg" },
+      { imagen: "/img/galeria/galeria12.jpg" },
       { imagen: "/img/galeria/galeria13.jpg" },
+      { imagen: "/img/galeria/galeria14.jpg" },
+      { imagen: "/img/galeria/galeria15.jpg" },
+      { imagen: "/img/galeria/galeria16.jpg" },
+      { imagen: "/img/galeria/galeria17.jpg" },
+      { imagen: "/img/galeria/galeria18.jpg" },
+      { imagen: "/img/galeria/galeria19.jpg" },
+      { imagen: "/img/galeria/galeria20.jpg" },
+      { imagen: "/img/galeria/galeria21.jpg" },
+      { imagen: "/img/galeria/galeria22.jpg" },
+      { imagen: "/img/galeria/galeria23.jpg" },
+      { imagen: "/img/galeria/galeria24.jpg" },
+      { imagen: "/img/galeria/galeria25.jpg" },
+      { imagen: "/img/galeria/galeria26.jpg" },
+      { imagen: "/img/galeria/galeria27.jpg" },
+      { imagen: "/img/galeria/galeria28.jpg" },
+      { imagen: "/img/galeria/galeria29.jpg" },
+      { imagen: "/img/galeria/galeria30.jpg" },
+      { imagen: "/img/galeria/galeria31.jpg" },
+      { imagen: "/img/galeria/galeria32.jpg" },
+      { imagen: "/img/galeria/galeria33.jpg" },
     ];
   
     const openModal = (index) => {
@@ -73,7 +93,7 @@
     });
   </script>
   
-  <div class="mx-2 my-4" transition:slide>
+  <div class="mx-1 my-4" transition:slide>
     <div class="flex flex-wrap gap-0.5 justify-center items-center">
       {#each galeria as { imagen }, index}
         <button class="w-1/5" on:click={() => openModal(index)}>
